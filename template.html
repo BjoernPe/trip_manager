@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="Björn Peter" />
+    <meta name="generator" content="" />
+    <title>Trip-Manager</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link href="./css/main.css" rel="stylesheet" />
+    <script src="./scripts/checkLogin.js"></script>
+    <script src="./scripts/logout.js"></script>
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      /* Füge benutzerdefinierten Stil hinzu */
+      #main-container {
+        display: flex;
+        min-height: 100vh;
+      }
+
+      #sidebar-container {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        background-color: #f8f9fa; /* Füge eine Hintergrundfarbe hinzu */
+      }
+
+    </style>
+  </head>
+  <body>
+    <!-- Beginn Body -->
+    <div id="main-container">
+      <!-- Sidebar -->
+      <div id="sidebar-container" class="sidebar-hidden"></div>
+      <!-- Carousel -->
+      <div class="container">
+        <div class="row p-3 pb-md-4 mx-auto text-center">
+            <h1 class="display-4 fw-normal">Template</h1>
+        </div>
+        <div class="row"></div>
+      </div>
+      <img id="toggle-sidebar" src="./img/logo.png" alt="Toggle Sidebar">
+      <button class="scroll-to-top btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Nach oben scrollen">&#9650;</button>
+    
+    </div>
+    <!-- Lade die JavaScript-Datei -->
+    <script src="./scripts/loader.js"></script>
+    <script src="./scripts/scroll.js"></script>
+    <script>
+      loadContent("sidebar");
+
+      function hideSidebar() {
+        document
+          .getElementById("sidebar-container")
+          .classList.add("sidebar-hidden");
+      }
+
+      function showSidebar() {
+        document
+          .getElementById("sidebar-container")
+          .classList.remove("sidebar-hidden");
+      }
+
+      document
+        .getElementById("toggle-sidebar")
+        .addEventListener("click", function () {
+          if (
+            document
+              .getElementById("sidebar-container")
+              .classList.contains("sidebar-hidden")
+          ) {
+            showSidebar();
+          } else {
+            hideSidebar();
+          }
+        });
+
+      // Verstecke die Sidebar standardmäßig auf kleinen Bildschirmen (Handys)
+      function hideSidebarOnMobile() {
+        if (window.innerWidth <= 768) {
+          hideSidebar();
+        }
+      }
+
+      window.onload = function () {
+        hideSidebarOnMobile();
+      };
+
+      window.onresize = function () {
+        hideSidebarOnMobile();
+      };
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
